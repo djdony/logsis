@@ -3,85 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Book;
-use Illuminate\Http\Request;
 
 class BookController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $books = Book::with('authors')->get();
 
-        return $this->sendResponse($books->toArray(), 'Books retrieved Ssuccessdully');
+        return $this->sendResponse($books->toArray(), 'Books retrieved successfully');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function noAuthor()
     {
-        //
+        $books = Book::doesntHave('authors')->get()
+            ->map(function ($book) {
+                return collect($book)->only([
+                    'id',
+                    'name',
+                ]);
+            });
+
+        return $this->sendResponse($books->toArray(), 'Books retrieved successfully');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Book $book)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Book $book)
-    {
-        //
-    }
 }

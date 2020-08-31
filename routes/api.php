@@ -22,4 +22,5 @@ Route::resources([
     'authors' => 'AuthorController',
     'books' => 'BookController',
 ]);
+Route::get('noauthors','BookController@noauthor');
 

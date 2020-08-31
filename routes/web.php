@@ -13,10 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::resources([
-    'authors' => 'AuthorController',
-    'books' => 'BookController',
-]);
+Route::view('/{any}', 'app')->where('any', '.*');
