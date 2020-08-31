@@ -1,7 +1,6 @@
 <template>
     <div>
         <h3>выбрать книгу из выпадающего списка и увидеть список ее авторов</h3>
-        {{books}}
         <b-form-select
             v-model="selected"
             :options="books.data"

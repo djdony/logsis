@@ -2049,7 +2049,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -50159,7 +50158,7 @@ var render = function() {
           "выбрать книгу из выпадающего списка и увидеть список ее авторов"
         )
       ]),
-      _vm._v("\n    " + _vm._s(_vm.books) + "\n    "),
+      _vm._v(" "),
       _c("b-form-select", {
         attrs: {
           options: _vm.books.data,

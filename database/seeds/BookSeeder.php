@@ -12,10 +12,10 @@ class BookSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Author::class, 20)->create();
-        factory(App\Book::class, 50)->create();
+        factory(App\Author::class, 10)->create();
+        factory(App\Book::class, 30)->create();
 
-        foreach(range(1, 100) as $index) {
+        foreach(range(1, 50) as $index) {
             DB::table('author_book')->insert(
                 [
                     'author_id' => \App\Author::all()->random()->id,
